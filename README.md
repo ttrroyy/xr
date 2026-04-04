@@ -251,19 +251,21 @@ bash <(curl -Ls https://raw.githubusercontent.com/mhsanaei/3x-ui/master/install.
 
 Заходим в панель в браузере и настраиваем DoH:
 
-Настройки Xray - Основное - Настройка стратегии протокола Freedom: ForceIP (если у вас есть IPv6) или ForceIPv4 (если только IPv4)
+Настройки Xray - Основное 
+Настройка стратегии протокола Freedom: ForceIP (если у вас есть IPv6) или ForceIPv4 (если только IPv4)
+Настройка маршрутизации доменов IPIfNonMatch
 ![описание](./assets/osn.png)
 
-Настройки Xray - DNS - Стратегия запроса: UseIP (если у вас есть IPv6) или UseIPv4 (если только IPv4)
+Настройки Xray - DNS
+Стратегия запроса: UseIP (если у вас есть IPv6) или UseIPv4 (если только IPv4)
 Включить параллельные запросы - включаем
-Нажимаем создать DNS
 ![описание](./assets/dns.png)
 
+Нажимаем создать DNS
 Адрес https://1.1.1.1/dns-query (и вторую запись но с https://8.8.8.8/dns-query)
 Порт 443
 Стратегия запроса UseIP (если у вас есть IPv6) или UseIPv4 (если только IPv4)
 Skip Fallback - отключаем
-
 ![описание](./assets/dns1.png)
 
 
