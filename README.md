@@ -74,3 +74,19 @@ sudo sed -i -E 's/^#?KbdInteractiveAuthentication.*/KbdInteractiveAuthentication
 ```
 
 !!! в папке **/etc/ssh/sshd_config.d/** могут быть и другие файлы .conf, созданные различными программами, поэтому если команда сверху не сработала то имйте ввиду, что какой-то конфиг берет приоритет над **50-cloud-init.conf**
+
+Перезагружаем SSH и проверяем итоговые значения:
+```
+sudo systemctl restart ssh
+```
+```
+sudo sshd -T | grep -E 'permitrootlogin|passwordauthentication|pubkeyauthentication|kbdinteractiveauthentication'
+```
+
+Вывод должен быть:
+```
+permitrootlogin no
+passwordauthentication no 
+pubkeyauthentication yes
+kbdinteractiveauthentication no
+```
