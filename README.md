@@ -1,4 +1,4 @@
-# Multi гайд по настройке для VLESS REALITY с SELF STEAL SNI на Ubuntu:
+# Multi гайд по настройке для VLESS REALITY XHTTP с SELF STEAL SNI на Ubuntu:
 
 [Как правильно настроить SSH на Linux](#Как-правильно-настроить-SSH-на-Linux)
 
