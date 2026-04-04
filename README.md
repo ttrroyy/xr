@@ -249,6 +249,8 @@ bash <(curl -Ls https://raw.githubusercontent.com/mhsanaei/3x-ui/master/install.
 
 ![описание](./assets/panel.png)
 
+Обязательно прописываем x-ui, выбираем пункт Enable BBR, 1, Enter
+
 Заходим в панель в браузере и настраиваем DoH:
 
 Настройки Xray - Основное 
