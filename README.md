@@ -18,7 +18,7 @@
 
 [Объединение нескольких панелей 3x-ui в подписку для клиентов](#Объединение-нескольких-панелей-3x-ui-в-подписку-для-клиентов)
 
-[Настройка инбаунда VLESS XHTTP + REALITY](#Настройка-инбаунда-VLESS-XHTTP-+-REALITY)
+[Настройка инбаунда VLESS XHTTP REALITY](#Настройка-инбаунда-VLESS-XHTTP-REALITY)
 
 ## Как правильно настроить SSH на Linux
 
@@ -460,7 +460,7 @@ docker compose down
 
 Ссылка на подписку: https://example.com:8080/sub/ВАШ_EMAIL
 
-## Настройка инбаунда VLESS XHTTP + REALITY
+## Настройка инбаунда VLESS XHTTP REALITY
 
 Порт 443
 
