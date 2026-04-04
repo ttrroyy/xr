@@ -251,5 +251,10 @@ bash <(curl -Ls https://raw.githubusercontent.com/mhsanaei/3x-ui/master/install.
 
 Заходим в панель в браузере и настраиваем DoH:
 
+![описание](./assets/osn.png)
+
+![описание](./assets/dns.png)
+
+![описание](./assets/dns1.png)
 
 
