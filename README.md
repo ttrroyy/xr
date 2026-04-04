@@ -458,3 +458,47 @@ docker compose down
 
 ## Настройка инбаунда VLESS XHTTP + REALITY
 
+Порт 443
+
+![описание](./assets/11.png)
+
+Транспорт XHTTP
+
+Хост ваш-домен
+
+Путь /любой/длинный/путь/
+
+Заголовок запроса - нажимаем +
+```
+User-Agent
+```
+```
+Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36
+```
+
+Padding Obfs Mode включаем
+
+Padding Key: 
+```
+x_padding
+```
+
+Padding Header:
+```
+Referer
+```
+
+![описание](./assets/22.png)
+
+Безопасность Reality
+
+Xver 1
+
+Target ваш-скопированный-target
+SNI ваш-домен
+
+Генерируем сертификаты кнопкой Get New Cert
+
+Обязательно включаем Sniffing, чтобы корректно работала маршрутизация
+
+![описание](./assets/33.png)
