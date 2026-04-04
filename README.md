@@ -1,4 +1,4 @@
-# Multi гайд по настройке для VLESS REALITY:
+# Multi гайд по настройке для VLESS REALITY на Ubuntu:
 
 # Как правильно настроить SSH на Linux
 
@@ -89,4 +89,46 @@ permitrootlogin no
 passwordauthentication no 
 pubkeyauthentication yes
 kbdinteractiveauthentication no
+```
+
+#Настройка Firewall
+
+1. Ставим и включаем
+
+```
+sudo apt update
+sudo apt install -y ufw
+sudo ufw default deny incoming
+sudo ufw default allow outgoing
+```
+
+2. Рекомендуется открывать только нужные порты. Также можно открыть порт только для вашего айпи (например для безопасного доступа к панели)
+
+Открытие обязательных портов. Другие добавляются по такому же примеру:
+```
+sudo ufw allow 22/tcp
+sudo ufw allow 80/tcp
+sudo ufw allow 443/tcp
+```
+Открытие порта для определенного айпи:
+
+```
+sudo ufw allow from ВАШ_IP to any port ВАШ_ПОРТ proto tcp
+```
+Включаем:
+
+```
+sudo ufw enable
+```
+Проверка:
+```
+sudo ufw status
+```
+
+Закрытие порта:
+```
+sudo ufw delete allow ВАШ_ПОРТ/tcp
+```
+```
+sudo ufw delete allow from ВАШ_IP to any port ВАШ_ПОРТ proto tcp
 ```
