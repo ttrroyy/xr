@@ -369,7 +369,7 @@ bash <(curl -Ls https://raw.githubusercontent.com/YukiKras/vless-scripts/refs/he
 
 Вводим ваш домен
 
-Скрипт выдаст пути к сертификатам (Certbot) и создаст сайт заглушку на Nginx, копируем пути к сертфикатам (/etc/letsencrypt/live/your-domain.com/fullchain.pem /etc/letsencrypt/live/your-domain.com/privkey.pem)
+Скрипт выдаст пути к сертификатам (Certbot), ваши TARGET (DEST) и SNI, а также создаст сайт заглушку на Nginx. Копируем пути к сертфикатам (/etc/letsencrypt/live/your-domain.com/fullchain.pem /etc/letsencrypt/live/your-domain.com/privkey.pem), TARGET (DEST) и SNI
 
 Теперь нам нужно сменить сертификаты панели на новые (т.к. будет конфликт за 80 порт, когда Acme решит продлить ваши сертификаты на IP) и удалить задачу автозапуска Acme из crontab
 
