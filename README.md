@@ -44,8 +44,22 @@ sudo systemctl restart ssh
 ssh -i "KEY_PATH" USER_NAME@SERVER_IP
 ```
 
-Если выдает ошибку, что ключ UNDETECTED нужно отключить наследование для приватного ключа:
+Если выдает ошибку, что ключ UNDETECTED нужно отключить наследование для приватного (!!! НЕ .pub) ключа:
 
+![описание](./assets/1.jpg)
 
+![описание](./assets/2.png)
+
+![описание](./assets/3.jpg)
+
+![описание](./assets/4.png)
+
+![описание](./assets/5.png)
+
+![описание](./assets/6.jpg)
+
+![описание](./assets/7.jpg)
+
+![описание](./assets/8.jpg)
 
 
