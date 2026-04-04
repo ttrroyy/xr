@@ -370,7 +370,7 @@ bash <(curl -Ls https://raw.githubusercontent.com/YukiKras/vless-scripts/refs/he
 
 Во вкладке Сертификаты вставляем пути, которые вам выдал скрипт формата (/etc/letsencrypt/live/your-domain.com/fullchain.pem /etc/letsencrypt/live/your-domain.com/privkey.pem)
 
-![описание](./assets/1.jpg)
+![описание](./assets/cert.png)
 
 Нажимаем Перезапуск панели 
 
@@ -381,6 +381,7 @@ bash <(curl -Ls https://raw.githubusercontent.com/YukiKras/vless-scripts/refs/he
 ```
 crontab -e
 ```
+
 Выбираем режим nano (обычно цифра 1) и стираем строчку, которая относится к acme, нажимаем Ctrl + O, Enter, Ctrl + X
 
 Перезапускаем x-ui:
