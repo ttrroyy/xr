@@ -432,7 +432,7 @@ nano .env
 ```
 PATH_SSL_KEY=/etc/letsencrypt/live/example.com/
 SITE_HOST=example.com
-SITE_PORT=8080
+SITE_PORT=ВАШ_ПОРТ
 SERVERS="https://server1.com:2096/sub/ https://server2.com:2096/sub/"
 SUB=sub
 TLS_MODE=on
@@ -460,7 +460,7 @@ docker compose down
 
 ![описание](./assets/44.png)
 
-Ссылка на подписку: https://example.com:8080/sub/ВАШ_SUBSCRIPTION
+Ссылка на подписку: https://example.com:ВАШ_ПОРТ/sub/ВАШ_SUBSCRIPTION
 
 ## Настройка инбаунда VLESS XHTTP REALITY
 
