@@ -207,3 +207,35 @@ sudo systemctl restart systemd-resolved
 ```
 resolvectl status
 ```
+
+## Установка и настройка 3x-ui
+
+3x-ui на данный момент самая юзер френдли панель для xray. Ставится и удаляется она довольно чисто, но мы рассмотрим и вариант для параноиков с установкой в Docker.
+
+Изначально установим пакеты:
+```
+apt update && apt upgrade -y
+apt install -y curl nano cron
+systemctl enable --now cron
+
+curl https://get.acme.sh | sh
+source ~/.bashrc
+```
+
+Установка 3x-ui через Docker:
+```
+bash <(curl -sSL https://get.docker.com)
+git clone https://github.com/mhsanaei/3x-ui.git
+cd 3x-ui
+docker compose up -d
+```
+
+Ручная установка 3x-ui:
+```
+bash <(curl -Ls https://raw.githubusercontent.com/mhsanaei/3x-ui/master/install.sh)
+```
+
+При установке оставляем все по умолчанию, протыкиваем везде Enter, самоподписанный сертификат будет выдан на ваш IP через Acme.
+В конце установки вам будут выданы Логин, Пароль и Ссылка на вашу панель:
+
+
