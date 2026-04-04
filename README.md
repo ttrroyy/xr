@@ -58,6 +58,8 @@ ssh -i "KEY_PATH" USER_NAME@SERVER_IP
 
 ![описание](./assets/6.jpg)
 
+*Вместо WINDOWS_USER_NAME пишем имя вашего юзера Windows*
+
 ![описание](./assets/7.jpg)
 
 ![описание](./assets/8.jpg)
