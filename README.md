@@ -286,3 +286,62 @@ Skip Fallback - отключаем
 ![описание](./assets/dns1.png)
 
 Перезагружаем Xray
+
+## Настройка GEO баз от runetfreedom
+
+Встроенные в xray базы geosite и geoip не включают списки заблокированных в РФ сервисов. Поэтому дабы мы могли удобно настраивать маршрутизацию лучше поставить данные геобазы, мы создадим скрипт для удобного обновления. Скрипт ничего не ломает, если обновить геобазы через x-ui они просто заменят наши гео.
+
+Создаем файл скрипта:
+```
+nano /usr/local/bin/update-xray-geo.sh
+```
+
+Вставляем текст:
+```
+#!/bin/bash
+
+# Путь к папке
+GEO_DIR="/usr/local/x-ui/bin"
+
+# Ссылки на файлы
+GEOIP_URL="https://github.com/runetfreedom/russia-v2ray-rules-dat/releases/latest/download/geoip.dat"
+GEOSITE_URL="https://github.com/runetfreedom/russia-v2ray-rules-dat/releases/latest/download/geosite.dat"
+
+echo "Начинаю обновление баз..."
+
+# Скачиваем во временные файлы
+curl -L -o "$GEO_DIR/geoip.dat.tmp" $GEOIP_URL
+curl -L -o "$GEO_DIR/geosite.dat.tmp" $GEOSITE_URL
+
+# Проверка, что файлы скачались и они не пустые (больше 100 Кб)
+if [ -s "$GEO_DIR/geoip.dat.tmp" ] && [ -s "$GEO_DIR/geosite.dat.tmp" ]; then
+    
+    # Удаляем старые файлы
+    rm -f "$GEO_DIR/geoip.dat"
+    rm -f "$GEO_DIR/geosite.dat"
+    
+    # Перемещаем новые на их место
+    mv "$GEO_DIR/geoip.dat.tmp" "$GEO_DIR/geoip.dat"
+    mv "$GEO_DIR/geosite.dat.tmp" "$GEO_DIR/geosite.dat"
+    
+    echo "Файлы успешно заменены. Перезапуск службы x-ui..."
+    systemctl restart x-ui
+    echo "Готово!"
+else
+    echo "Ошибка: загрузка не удалась, старые файлы не были удалены."
+    rm -f "$GEO_DIR/geoip.dat.tmp" "$GEO_DIR/geosite.dat.tmp"
+    exit 1
+fi
+```
+
+Нажимаем Ctrl + O, Enter, Ctrl + X
+
+Делаем скрипт исполняемым:
+```
+chmod +x /usr/local/bin/update-xray-geo.sh
+```
+
+Запускаем:
+```
+bash /usr/local/bin/update-xray-geo.sh
+```
