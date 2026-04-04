@@ -360,12 +360,31 @@ bash <(curl -Ls https://raw.githubusercontent.com/YukiKras/vless-scripts/refs/he
 
 Вводим ваш домен
 
-Скрипт выдаст пути к сертификатам и создаст сайт заглушку на Nginx, копируем пути к сертфикатам (/etc/letsencrypt/live/your-domain.com/fullchain.pem /etc/letsencrypt/live/your-domain.com/privkey.pem)
+Скрипт выдаст пути к сертификатам (Certbot) и создаст сайт заглушку на Nginx, копируем пути к сертфикатам (/etc/letsencrypt/live/your-domain.com/fullchain.pem /etc/letsencrypt/live/your-domain.com/privkey.pem)
 
-Теперь нам нужно сменить сертификаты панели на новые (т.к. будет конфликт за 80 порт, когда Acme решит продлить ваши сертификаты на IP)
+Теперь нам нужно сменить сертификаты панели на новые (т.к. будет конфликт за 80 порт, когда Acme решит продлить ваши сертификаты на IP) и удалить задачу автозапуска Acme из crontab
 
 Заходим в панель в браузере - Настройки 
 
-Нажимаем Перезапуск панели и заходим по новой ссылке в панель
+Домен панели - вводим ваш домен, на который выдавались сертификаты
+
+Во вкладке Сертификаты вставляем пути, которые вам выдал скрипт формата (/etc/letsencrypt/live/your-domain.com/fullchain.pem /etc/letsencrypt/live/your-domain.com/privkey.pem)
+
+![описание](./assets/1.jpg)
+
+Нажимаем Перезапуск панели 
 
 Узнать новую ссылку можно прописав в консоль x-ui и выбрав пункт View current settings
+
+Теперь удаляем задачу ACME из crontab
+
+```
+crontab -e
+```
+Выбираем режим nano (обычно цифра 1) и стираем строчку, которая относится к acme, нажимаем Ctrl + O, Enter, Ctrl + X
+
+Перезапускаем x-ui:
+
+```
+sudo systemctl restart x-ui
+```
