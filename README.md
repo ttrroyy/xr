@@ -345,3 +345,27 @@ chmod +x /usr/local/bin/update-xray-geo.sh
 ```
 bash /usr/local/bin/update-xray-geo.sh
 ```
+
+## Настройка SELF STEAL SNI:
+
+Для начала вам нужно приобрести домен и создать DNS A запись, чтобы за доменом стоял айпи вашего vps:
+
+A @ ВАШ_IP
+
+Как только на 2ip.ru увидите, что ваш домен привязан к вашему айпи, запускаем скрипт:
+
+```
+bash <(curl -Ls https://raw.githubusercontent.com/YukiKras/vless-scripts/refs/heads/main/fakesite.sh)
+```
+
+Вводим ваш домен
+
+Скрипт выдаст пути к сертификатам и создаст сайт заглушку на Nginx, копируем пути к сертфикатам (/etc/letsencrypt/live/your-domain.com/fullchain.pem /etc/letsencrypt/live/your-domain.com/privkey.pem)
+
+Теперь нам нужно сменить сертификаты панели на новые (т.к. будет конфликт за 80 порт, когда Acme решит продлить ваши сертификаты на IP)
+
+Заходим в панель в браузере - Настройки 
+
+Нажимаем Перезапуск панели и заходим по новой ссылке в панель
+
+Узнать новую ссылку можно прописав в консоль x-ui и выбрав пункт View current settings
