@@ -91,7 +91,7 @@ pubkeyauthentication yes
 kbdinteractiveauthentication no
 ```
 
-#Настройка Firewall
+# Настройка Firewall
 
 1. Ставим и включаем
 
@@ -110,16 +110,19 @@ sudo ufw allow 22/tcp
 sudo ufw allow 80/tcp
 sudo ufw allow 443/tcp
 ```
+
 Открытие порта для определенного айпи:
 
 ```
 sudo ufw allow from ВАШ_IP to any port ВАШ_ПОРТ proto tcp
 ```
-Включаем:
+
+Включение UFW:
 
 ```
 sudo ufw enable
 ```
+
 Проверка:
 ```
 sudo ufw status
@@ -131,4 +134,9 @@ sudo ufw delete allow ВАШ_ПОРТ/tcp
 ```
 ```
 sudo ufw delete allow from ВАШ_IP to any port ВАШ_ПОРТ proto tcp
+```
+
+Выключение UFW:
+```
+sudo ufw disable
 ```
