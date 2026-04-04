@@ -240,3 +240,7 @@ bash <(curl -Ls https://raw.githubusercontent.com/mhsanaei/3x-ui/master/install.
 
 ![описание](./assets/panel.png)
 
+Заходим в панель в браузере и настраиваем DoH:
+
+
+
