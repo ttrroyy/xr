@@ -355,14 +355,15 @@ chmod +x /usr/local/bin/update-xray-geo.sh
 bash /usr/local/bin/update-xray-geo.sh
 ```
 
-## Настройка SELF STEAL SNI
+## Настройка SELF STEAL SNI 
+
+(https://github.com/YukiKras/wiki/blob/main/selfsni.md)
 
 Для начала вам нужно приобрести домен и создать DNS A запись, чтобы за доменом стоял айпи вашего vps:
 
 A @ ВАШ_IP
 
 Как только на 2ip.ru увидите, что ваш домен привязан к вашему айпи, запускаем скрипт:
-
 ```
 bash <(curl -Ls https://raw.githubusercontent.com/YukiKras/vless-scripts/refs/heads/main/fakesite.sh)
 ```
@@ -386,7 +387,6 @@ bash <(curl -Ls https://raw.githubusercontent.com/YukiKras/vless-scripts/refs/he
 Узнать новую ссылку можно прописав в консоль x-ui и выбрав пункт View current settings
 
 Теперь удаляем задачу ACME из crontab
-
 ```
 crontab -e
 ```
@@ -394,7 +394,61 @@ crontab -e
 Выбираем режим nano (обычно цифра 1) и стираем строчку, которая относится к acme, нажимаем Ctrl + O, Enter, Ctrl + X
 
 Перезапускаем x-ui:
-
 ```
 sudo systemctl restart x-ui
 ```
+
+## Объединение нескольких панелей 3x-ui в подписку для клиентов 
+
+(https://github.com/apa4h/nginx-3x-ui-subscription-proxy)
+
+Установка Docker:
+```
+curl -fsSL https://get.docker.com | sh
+```
+
+Клонируем с гитхаба:
+```
+git clone https://github.com/apa4h/nginx-3x-ui-subscription-proxy.git
+```
+
+```
+cd nginx-3x-ui-subscription-proxy
+```
+
+```
+cp .env.template .env
+```
+
+```
+nano .env
+```
+
+Пример конфига:
+```
+PATH_SSL_KEY=/etc/letsencrypt/live/example.com/
+SITE_HOST=example.com
+SITE_PORT=8080
+SERVERS="https://server1.com:2096/sub/ https://server2.com:2096/sub/"
+SUB=sub
+TLS_MODE=on
+```
+
+В PATH_SSL_KEY и SITE_HOST вводим наш домен вместо example.com
+
+SITE_PORT выбираем свободный порт (не забываем открыть его, а также 2096 в файрволе)
+
+В SERVERS вводим ссылки на ваши панели
+
+TLS_mode ставим on
+
+Собираем контейнер:
+```
+docker compose up -d
+```
+
+Если нужно остановить:
+```
+docker compose down
+```
+
