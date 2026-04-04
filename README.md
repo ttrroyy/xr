@@ -140,3 +140,46 @@ sudo ufw delete allow from ВАШ_IP to any port ВАШ_ПОРТ proto tcp
 ```
 sudo ufw disable
 ```
+
+# Fail2Ban. Защита от перебора и «шума» в логах
+
+Даже при входе по ключам полезно включить защиту от перебора. Он автоматически блокирует IP, которые пытаются ломиться в SSH/RDP/веб-авторизацию. В итоге меньше мусора в логах, меньше попыток подобрать что-либо и проще заметить настоящую проблему.
+
+1. Установка:
+```
+sudo apt update
+sudo apt install -y fail2ban
+```
+
+2. Создать локальный конфиг:
+```
+sudo nano /etc/fail2ban/jail.local
+```
+
+3. Пример конфига:
+```
+[sshd]
+enabled = true
+maxretry = 5
+findtime = 10m
+bantime  = 1h
+```
+
+4. Запуск:
+```
+sudo systemctl enable --now fail2ban
+sudo fail2ban-client status sshd
+```
+
+5. Остановка сервиса и отключение автозапуска:
+```
+sudo systemctl stop fail2ban
+```
+```
+sudo systemctl disable fail2ban
+```
+
+6. Разбан IP
+```
+sudo fail2ban-client set sshd unbanip IP
+```
