@@ -319,10 +319,16 @@ bash <(curl -Ls https://raw.githubusercontent.com/YukiKras/vless-scripts/refs/he
 
 Теперь удаляем задачу ACME из crontab
 ```
-crontab -e
+~/.acme.sh/acme.sh --uninstall-cronjob
+/root/.acme.sh/acme.sh --uninstall-cronjob
 ```
 
-Выбираем режим nano (обычно цифра 1) и стираем строчку, которая относится к acme, нажимаем Ctrl + O, Enter, Ctrl + X
+Проверяем:
+```
+crontab -l | grep -E "acme.sh|--cron"
+```
+
+Должно быть пусто
 
 Перезапускаем x-ui:
 ```
