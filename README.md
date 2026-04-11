@@ -2,11 +2,7 @@
 
 [Как правильно настроить SSH на Linux](#Как-правильно-настроить-SSH-на-Linux)
 
-[Настройка DNS в системе](#Настройка-DNS-в-системе)
-
 [Установка и настройка 3x-ui](#Установка-и-настройка-3x-ui)
-
-[Настройка DoH в XRAY](#Настройка-DoH-в-XRAY)
 
 [Настройка SELF STEAL SNI](#Настройка-SELF-STEAL-SNI)
 
@@ -103,127 +99,6 @@ permitrootlogin no
 passwordauthentication no 
 pubkeyauthentication yes
 kbdinteractiveauthentication no
-```
-
-## Настройка Firewall
-
-1. Ставим и включаем
-
-```
-sudo apt update
-sudo apt install -y ufw
-sudo ufw default deny incoming
-sudo ufw default allow outgoing
-```
-
-2. Рекомендуется открывать только нужные порты. Также можно открыть порт только для вашего айпи (например для безопасного доступа к панели)
-
-Открытие обязательных портов. Другие добавляются по такому же примеру:
-```
-sudo ufw allow 22/tcp
-sudo ufw allow 80/tcp
-sudo ufw allow 443/tcp
-```
-
-Открытие порта для определенного айпи:
-
-```
-sudo ufw allow from ВАШ_IP to any port ВАШ_ПОРТ proto tcp
-```
-
-Включение UFW:
-
-```
-sudo ufw enable
-```
-
-Проверка:
-```
-sudo ufw status
-```
-
-Закрытие порта:
-```
-sudo ufw delete allow ВАШ_ПОРТ/tcp
-```
-```
-sudo ufw delete allow from ВАШ_IP to any port ВАШ_ПОРТ proto tcp
-```
-
-Выключение UFW:
-```
-sudo ufw disable
-```
-
-Сброс UFW:
-```
-sudo ufw reset
-```
-
-## Настройка Fail2Ban
-
-Даже при входе по ключам полезно включить защиту от перебора. Он автоматически блокирует IP, которые пытаются ломиться в SSH/RDP/веб-авторизацию. В итоге меньше мусора в логах, меньше попыток подобрать что-либо и проще заметить настоящую проблему.
-
-1. Установка:
-```
-sudo apt update
-sudo apt install -y fail2ban
-```
-
-2. Создать локальный конфиг:
-```
-sudo nano /etc/fail2ban/jail.local
-```
-
-3. Пример конфига:
-```
-[sshd]
-enabled = true
-maxretry = 5
-findtime = 10m
-bantime  = 1h
-```
-
-4. Запуск:
-```
-sudo systemctl enable --now fail2ban
-sudo fail2ban-client status sshd
-```
-
-5. Остановка сервиса и отключение автозапуска:
-```
-sudo systemctl stop fail2ban
-```
-```
-sudo systemctl disable fail2ban
-```
-
-6. Разбан IP
-```
-sudo fail2ban-client set sshd unbanip IP
-```
-
-## Настройка DNS в системе
-
-В XRAY мы в любом случае не будем использовать системный днс, но на некоторых хостингах вписаны только локальные днс, что может повысить пинг в системе, а также ограничить доступ к некоторым репозиториям(особенно на серверах с ТСПУ). Поэтому мы пропишем нормальные днс в Global.
-
-```
-sudo nano /etc/systemd/resolved.conf
-```
-
-В строке #DNS= удаляем # и вписываем 1.1.1.1 8.8.8.8
-Должно получиться: DNS=1.1.1.1 8.8.8.8
-
-Нажимаем Ctrl+O, Enter, Ctrl+X
-
-Перезагружаем:
-```
-sudo systemctl restart systemd-resolved
-```
-
-Проверяем:
-```
-resolvectl status
 ```
 
 ## Установка и настройка 3x-ui
