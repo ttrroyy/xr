@@ -282,26 +282,6 @@ docker compose down
 
 Путь /любой/длинный/путь/
 
-Заголовок запроса - нажимаем +
-```
-User-Agent
-```
-```
-Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36
-```
-
-Padding Obfs Mode включаем
-
-Padding Key: 
-```
-x_padding
-```
-
-Padding Header:
-```
-Referer
-```
-
 ![описание](./assets/22.png)
 
 Безопасность Reality
