@@ -138,9 +138,11 @@ curl -L https://raw.githubusercontent.com/Skrepysh/tools/refs/heads/main/install
 ```
 
 Выбираем установку скрипта нажмя на 1 и Enter:
+
 ![описание](./assets/w1.png)
 
 Нажимаем просто Enter:
+
 ![описание](./assets/w2.png)
 
 Вводим 40000 порт и нажимаем на Enter
@@ -148,6 +150,7 @@ curl -L https://raw.githubusercontent.com/Skrepysh/tools/refs/heads/main/install
 Далее в 3x ui заходим в Настройки Xray - Аутбаунды - Создать аутбаунд
 
 Вводим все как на скрине и перезапускаем Xray:
+
 ![описание](./assets/w3.png)
 
 ## Настройка SELF STEAL SNI 
