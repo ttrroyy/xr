@@ -240,8 +240,6 @@ docker compose down
 
 Порт 443
 
-![описание](./assets/11.png)
-
 Транспорт XHTTP
 
 Хост ваш-домен
