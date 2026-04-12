@@ -127,6 +127,17 @@ bash <(curl -Ls https://raw.githubusercontent.com/mhsanaei/3x-ui/master/install.
 
 Обязательно прописываем x-ui, выбираем пункт Enable BBR, 1, Enter
 
+## Установка WARP
+
+Скачиваем и запускаем скрипт установки WARP:
+
+```
+curl -L https://raw.githubusercontent.com/Skrepysh/tools/refs/heads/main/install-warp-cli.sh > install-warp-cli.sh && chmod +x install-warp-cli.sh && ./install-warp-cli.sh
+```
+
+Выбираем установку скрипта нажмя на 1 и Enter
+
+
 ## Настройка SELF STEAL SNI 
 
 (https://github.com/YukiKras/wiki/blob/main/selfsni.md)
