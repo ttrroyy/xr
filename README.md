@@ -4,6 +4,8 @@
 
 [Установка и настройка 3x-ui](#Установка-и-настройка-3x-ui)
 
+[Установка WARP](#Установка-WARP)
+
 [Настройка SELF STEAL SNI](#Настройка-SELF-STEAL-SNI)
 
 [Объединение нескольких панелей 3x-ui в подписку для клиентов](#Объединение-нескольких-панелей-3x-ui-в-подписку-для-клиентов)
@@ -135,8 +137,18 @@ bash <(curl -Ls https://raw.githubusercontent.com/mhsanaei/3x-ui/master/install.
 curl -L https://raw.githubusercontent.com/Skrepysh/tools/refs/heads/main/install-warp-cli.sh > install-warp-cli.sh && chmod +x install-warp-cli.sh && ./install-warp-cli.sh
 ```
 
-Выбираем установку скрипта нажмя на 1 и Enter
+Выбираем установку скрипта нажмя на 1 и Enter:
+![описание](./assets/w1.png)
 
+Нажимаем просто Enter:
+![описание](./assets/w2.png)
+
+Вводим 40000 порт и нажимаем на Enter
+
+Далее в 3x ui заходим в Настройки Xray - Аутбаунды - Создать аутбаунд
+
+Вводим все как на скрине и перезапускаем Xray:
+![описание](./assets/w3.png)
 
 ## Настройка SELF STEAL SNI 
 
