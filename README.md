@@ -339,27 +339,27 @@ docker compose down
 
 Путь /любой/длинный/путь/
 
-Добавляем несколько Заголовков запроса
+Добавляем несколько Заголовков запроса:
 
-User-Agent 
+1. User-Agent 
 
 ```
 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36
 ```
 
-Accept 
+2. Accept 
 
 ```
 text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
 ```
 
-Referer 
+3. Referer 
 
 ```
 https://ваш-домен/
 ```
 
-Accept-Language 
+4. Accept-Language 
 
 ```
 ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7
@@ -373,10 +373,10 @@ Padding Header Referer
 
 Безопасность Reality
 
-Xver 1
+Xver 1 (если не используете SELF STEAL SNI ставьте 0)
 
-Target ваш-скопированный-target
-SNI ваш-домен
+Target ваш-скопированный-target (если не используете SELF STEAL SNI любой не подозрительный домен формата домен:443, пример: google.com:443)
+SNI ваш-домен (если не используете SELF STEAL SNI тот же домен, что и выше, пример: google.com)
 
 Генерируем сертификаты кнопкой Get New Cert
 
