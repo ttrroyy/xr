@@ -168,11 +168,15 @@ bash <(curl -Ls https://raw.githubusercontent.com/mhsanaei/3x-ui/master/install.
 
 Сохраняем
 
+![описание](./assets/s1.jpg)
+
 Переходим на вкладку DNS, включаем
 
 Стратегию запроса оставляем UseIP (или UseIPv4, если у вас нет IPv6 на vps)
 
 Включаем ползунки Отключить резевный DNS, Отключить резевный DNS при совпадении
+
+![описание](./assets/s2.jpg)
 
 Нажимаем Создать DNS
 
@@ -183,6 +187,10 @@ bash <(curl -Ls https://raw.githubusercontent.com/mhsanaei/3x-ui/master/install.
 Стратегия: UseIP (или UseIPv4, если у вас нет IPv6 на vps)
 
 Skip Fallback - Включено
+
+Можно добавить еще серверов, допустим https+local://8.8.8.8/dns-query или https+local://9.9.9.9/dns-query
+
+![описание](./assets/s3.jpg)
 
 Сохраняем, Перезапускаем Xray
 
