@@ -109,11 +109,10 @@ kbdinteractiveauthentication no
 
 Изначально установим пакеты:
 ```
-apt update && apt upgrade -y
-apt install -y curl nano cron
-systemctl enable --now cron
-
-curl https://get.acme.sh | sh
+apt update && apt upgrade -y && \
+apt install -y curl nano cron dnsutils && \
+systemctl enable --now cron && \
+curl https://get.acme.sh | sh && \
 source ~/.bashrc
 ```
 
