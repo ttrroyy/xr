@@ -2,6 +2,8 @@
 
 [Как правильно настроить SSH на Linux](#Как-правильно-настроить-SSH-на-Linux)
 
+[Настройка DNS в Ubuntu для адаптера Global](#Настройка-DNS-в-Ubuntu-для-адаптера-Global)
+
 [Установка и настройка 3x-ui](#Установка-и-настройка-3x-ui)
 
 [Установка WARP](#Установка-WARP)
@@ -102,6 +104,18 @@ passwordauthentication no
 pubkeyauthentication yes
 kbdinteractiveauthentication no
 ```
+
+## Настройка DNS в Ubuntu для адаптера Global
+
+Если на VPS стоят DNS хостинга, то лучше прописать свои.
+
+```
+sudo nano /etc/systemd/resolved.conf
+```
+
+В строке #DNS= убираем # и прописываем днс через пробел
+
+Должно получиться (пример): DNS=1.1.1.1 1.0.0.1 8.8.8.8 8.8.4.4
 
 ## Установка и настройка 3x-ui
 
