@@ -117,6 +117,18 @@ sudo nano /etc/systemd/resolved.conf
 
 Должно получиться (пример): DNS=1.1.1.1 1.0.0.1 8.8.8.8 8.8.4.4
 
+Перезагружаем сервис
+
+```
+sudo systemctl restart systemd-resolved
+```
+
+Проверка статуса
+
+```
+sudo systemctl status systemd-resolved
+```
+
 ## Установка и настройка 3x-ui
 
 3x-ui на данный момент самая юзер френдли панель для xray. 
