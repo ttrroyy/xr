@@ -375,7 +375,8 @@ Padding Header Referer
 
 Xver 1 (если не используете SELF STEAL SNI ставьте 0)
 
-Target ваш-скопированный-target (если не используете SELF STEAL SNI любой не подозрительный домен формата домен:443, пример: google.com:443)
+Target ваш-скопированный-target (если не используете SELF STEAL SNI любой не подозрительный домен формата, пример: google.com:443)
+
 SNI ваш-домен (если не используете SELF STEAL SNI тот же домен, что и выше, пример: google.com)
 
 Генерируем сертификаты кнопкой Get New Cert
