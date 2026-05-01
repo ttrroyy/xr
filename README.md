@@ -188,11 +188,11 @@ bash <(curl -Ls https://raw.githubusercontent.com/mhsanaei/3x-ui/master/install.
 
 Skip Fallback - Включено
 
-Можно добавить еще серверов, допустим https+local://8.8.8.8/dns-query или https+local://9.9.9.9/dns-query
-
 ![описание](./assets/s3.jpg)
 
 Сохраняем, Перезапускаем Xray
+
+(Можно добавить еще серверов, допустим https+local://8.8.8.8/dns-query или https+local://9.9.9.9/dns-query)
 
 ## Установка WARP
 
