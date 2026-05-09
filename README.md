@@ -126,7 +126,7 @@ sudo nano /etc/systemd/resolved.conf
 Перезагружаем сервис
 
 ```
-sudo systemctl restart systemd-resolved
+sudo resolvectl status
 ```
 
 Проверка статуса
