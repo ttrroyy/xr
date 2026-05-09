@@ -126,13 +126,13 @@ sudo nano /etc/systemd/resolved.conf
 Перезагружаем сервис
 
 ```
-sudo resolvectl status
+sudo systemctl restart systemd-resolved
 ```
 
 Проверка статуса
 
 ```
-sudo systemctl status systemd-resolved
+sudo resolvectl status
 ```
 
 ## Установка и настройка 3x-ui
