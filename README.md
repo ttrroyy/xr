@@ -12,8 +12,6 @@
 
 [Настройка SELF STEAL SNI](#Настройка-SELF-STEAL-SNI)
 
-[Объединение нескольких панелей 3x-ui в подписку для клиентов](#Объединение-нескольких-панелей-3x-ui-в-подписку-для-клиентов)
-
 [Настройка инбаунда VLESS XHTTP REALITY](#Настройка-инбаунда-VLESS-XHTTP-REALITY)
 
 [Настройка инбаунда VLESS TCP REALITY](#Настройка-инбаунда-VLESS-TCP-REALITY)
@@ -270,66 +268,6 @@ crontab -l | grep -E "acme.sh|--cron"
 ```
 sudo systemctl restart x-ui
 ```
-
-## Объединение нескольких панелей 3x-ui в подписку для клиентов 
-
-(https://github.com/apa4h/nginx-3x-ui-subscription-proxy)
-
-Установка Docker:
-```
-curl -fsSL https://get.docker.com | sh
-```
-
-Клонируем с гитхаба:
-```
-git clone https://github.com/apa4h/nginx-3x-ui-subscription-proxy.git
-```
-
-```
-cd nginx-3x-ui-subscription-proxy
-```
-
-```
-cp .env.template .env
-```
-
-```
-nano .env
-```
-
-Пример конфига:
-```
-PATH_SSL_KEY=/etc/letsencrypt/live/example.com/
-SITE_HOST=example.com
-SITE_PORT=ВАШ_ПОРТ
-SERVERS="https://server1.com:2096/sub/ https://server2.com:2096/sub/"
-SUB=sub
-TLS_MODE=on
-```
-
-В PATH_SSL_KEY и SITE_HOST вводим наш домен вместо example.com
-
-SITE_PORT выбираем свободный порт (не забываем открыть его, а также 2096 в файрволе)
-
-В SERVERS вводим ссылки на ваши панели
-
-TLS_mode ставим on
-
-Собираем контейнер:
-```
-docker compose up -d
-```
-
-Если нужно остановить:
-```
-docker compose down
-```
-
-Далее в инбаундах 3x-ui в указанных панелях нужно в настройках Клиентов указать одинаковый SUBSCRIPTION, который мы и укажем в ссылке на подписку. Клиенты с этим SUBSCRIPTION будут автоматически подтягиваться в подписку.
-
-![описание](./assets/44.png)
-
-Ссылка на подписку: https://example.com:ВАШ_ПОРТ/sub/ВАШ_SUBSCRIPTION
 
 ## Настройка инбаунда VLESS XHTTP REALITY
 
