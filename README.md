@@ -4,19 +4,9 @@
 
 [Настройка DNS в Ubuntu для адаптера Global](#Настройка-DNS-в-Ubuntu-для-адаптера-Global)
 
-[Установка и настройка 3x-ui](#Установка-и-настройка-3x-ui)
-
 [Настройка DNS в Xray](#Настройка-DNS-в-Xray)
 
 [Установка WARP](#Установка-WARP)
-
-[Настройка SELF STEAL SNI](#Настройка-SELF-STEAL-SNI)
-
-[Настройка инбаунда VLESS XHTTP REALITY](#Настройка-инбаунда-VLESS-XHTTP-REALITY)
-
-[Настройка инбаунда VLESS TCP REALITY](#Настройка-инбаунда-VLESS-TCP-REALITY)
-
-[Настройка инбаунда HYSTERIA2](#Настройка-инбаунда-HYSTERIA2)
 
 ## Как правильно настроить SSH на Linux
 
@@ -132,31 +122,6 @@ sudo systemctl restart systemd-resolved
 ```
 sudo resolvectl status
 ```
-
-## Установка и настройка 3x-ui
-
-3x-ui на данный момент самая юзер френдли панель для xray. 
-
-Изначально установим пакеты:
-```
-apt update && apt upgrade -y && \
-apt install -y curl nano cron dnsutils && \
-systemctl enable --now cron && \
-curl https://get.acme.sh | sh && \
-source ~/.bashrc
-```
-
-Ручная установка 3x-ui:
-```
-bash <(curl -Ls https://raw.githubusercontent.com/mhsanaei/3x-ui/master/install.sh)
-```
-
-При установке оставляем все по умолчанию, протыкиваем везде Enter, самоподписанный сертификат будет выдан на ваш IP через Acme.
-В конце установки вам будут выданы Логин, Пароль и Ссылка на вашу панель:
-
-![описание](./assets/panel.png)
-
-Обязательно прописываем x-ui, выбираем пункт Enable BBR, 1, Enter
 
 ## Настройка DNS в Xray
 
