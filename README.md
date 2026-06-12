@@ -8,7 +8,7 @@
 
 [Установка WARP](#Установка-WARP)
 
-[Установка 3x ui + self steal (xhttp tls, tcp reality, hysteria2)](#Установка-3x-ui-+-self-steal-(xhttp-tls,-tcp-reality,-hysteria2))
+[Установка 3x ui self steal](#Установка-3x-ui-self-steal)
 
 ## Как правильно настроить SSH на Linux
 
@@ -187,8 +187,7 @@ curl -L https://raw.githubusercontent.com/Skrepysh/tools/refs/heads/main/install
 
 ![описание](./assets/w3.png)
 
-## Установка 3x ui + self steal (xhttp tls, tcp reality, hysteria2)
-
+## Установка 3x ui self steal
 Вам нужно два домена (панели и селф стил) с днс А записями на айпи вашего VPS
 
 ```
