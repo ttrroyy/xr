@@ -8,6 +8,8 @@
 
 [Установка WARP](#Установка-WARP)
 
+[Установка 3x ui + self steal (xhttp tls, tcp reality, hysteria2)](#Установка-3x-ui-+-self-steal-(xhttp-tls,-tcp-reality,-hysteria2))
+
 ## Как правильно настроить SSH на Linux
 
 Самая надёжная базовая схема такая: создаем отдельного пользователя, входим по SSH-ключу, а административные действия выполняем через sudo. Root-логин напрямую не используем, а вход по паролю и пароль для использования команд sudo отключаем. Тогда даже если кто-то будет круглосуточно «стучаться» в SSH, он упрётся в отсутствие паролей как класса.
@@ -185,147 +187,14 @@ curl -L https://raw.githubusercontent.com/Skrepysh/tools/refs/heads/main/install
 
 ![описание](./assets/w3.png)
 
-## Настройка SELF STEAL SNI 
+## Установка 3x ui + self steal (xhttp tls, tcp reality, hysteria2)
 
-(https://github.com/YukiKras/wiki/blob/main/selfsni.md)
-
-Для начала вам нужно приобрести домен и создать DNS A запись, чтобы за доменом стоял айпи вашего vps:
-
-A @ ВАШ_IP
-
-Как только на 2ip.ru увидите, что ваш домен привязан к вашему айпи, запускаем скрипт:
-```
-bash <(curl -Ls https://raw.githubusercontent.com/YukiKras/vless-scripts/refs/heads/main/fakesite.sh)
-```
-
-Вводим ваш домен
-
-Скрипт выдаст пути к сертификатам (Certbot), ваши TARGET (DEST) и SNI, а также создаст сайт заглушку на Nginx. Копируем пути к сертфикатам (/etc/letsencrypt/live/your-domain.com/fullchain.pem /etc/letsencrypt/live/your-domain.com/privkey.pem), TARGET (DEST) и SNI
-
-Теперь нам нужно сменить сертификаты панели на новые (т.к. будет конфликт за 80 порт, когда Acme решит продлить ваши сертификаты на IP) и удалить задачу автозапуска Acme из crontab
-
-Заходим в панель в браузере - Настройки 
-
-Домен панели - вводим ваш домен, на который выдавались сертификаты
-
-Во вкладке Сертификаты вставляем пути, которые вам выдал скрипт формата (/etc/letsencrypt/live/your-domain.com/fullchain.pem /etc/letsencrypt/live/your-domain.com/privkey.pem)
-
-![описание](./assets/cert.png)
-
-Нажимаем Перезапуск панели 
-
-Узнать новую ссылку можно прописав в консоль x-ui и выбрав пункт View current settings
-
-Теперь удаляем задачу ACME из crontab
-```
-~/.acme.sh/acme.sh --uninstall-cronjob
-/root/.acme.sh/acme.sh --uninstall-cronjob
-```
-
-Проверяем:
-```
-crontab -l | grep -E "acme.sh|--cron"
-```
-
-Должно быть пусто
-
-Перезапускаем x-ui:
-```
-sudo systemctl restart x-ui
-```
-
-## Настройка инбаунда VLESS XHTTP REALITY
-
-![описание](./assets/p1.jpg)
-
-Протокол vless
-
-Порт 443
-
-Транспорт XHTTP
-
-Хост ваш-домен
-
-Путь /любой/длинный/путь/
-
-Добавляем несколько Заголовков запроса:
-
-1. User-Agent 
+Вам нужно два домена (панели и селф стил) с днс А записями на айпи вашего VPS
 
 ```
-Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36
+sudo su -c "bash <(wget -qO- https://raw.githubusercontent.com/mozaroc/x-ui-pro/refs/heads/master/x-ui-latest.sh) -install yes"
 ```
 
-2. Accept 
+Запускаем скрипт, вводим домены, ждем завершения, в конце копируем данные панели и заходим по ним. 
 
-```
-text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
-```
-
-3. Referer 
-
-```
-https://ваш-домен/
-```
-
-4. Accept-Language 
-
-```
-ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7
-```
-
-Включаем Padding Obfs Mode
-
-Padding Key x_padding
-
-Padding Header Referer
-
-Безопасность Reality
-
-Xver 1 (если не используете SELF STEAL SNI ставьте 0)
-
-Target ваш-скопированный-target (если не используете SELF STEAL SNI любой не подозрительный домен формата, пример: google.com:443)
-
-SNI ваш-домен (если не используете SELF STEAL SNI тот же домен, что и выше, пример: google.com)
-
-Генерируем сертификаты кнопкой Get New Cert
-
-Обязательно включаем Sniffing, чтобы корректно работала маршрутизация
-
-Создаем инбаунд
-
-![описание](./assets/p2.jpg)
-
-![описание](./assets/p3.jpg)
-
-## Настройка инбаунда HYSTERIA2
-
-ДЛЯ ТОГО, ЧТОБЫ У ВАС РАБОТАЛА HYSTERIA2 ОБЯЗАТЕЛЬНО НУЖЕН ДОМЕН С СЕРТИФИКАТОМ НА VPS
-
-![описание](./assets/z1.jpg)
-
-Протокол hysteria
-
-Версия 2
-
-Порт Любой свободный
-
-Auth Password нажимаем сгенерировать (круглые стрелки)
-
-Masquerade включаем
-
-Type Proxy
-
-URL любой популярный домен (пример: https://www.bing.com/)
-
-![описание](./assets/z2.jpg)
-
-SNI ваш-домен
-
-ALPN h3 (обязательно!!!)
-
-Нажимаем Установить сертификаты панели (если у вас 3x ui на домене, если нет, то указываем пути вручную)
-
-Включаем Sniffing
-
-Создаем инбаунд
+ВАЖНО! В стоковом состоянии инбаунды оставлять не стоит. Обратить внимание на fingerprint (любой кроме chrome, он заблокирован) и на sniffing (нужно вкл).
