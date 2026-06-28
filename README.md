@@ -4,8 +4,6 @@
 
 [Настройка DNS в Ubuntu для адаптера Global](#Настройка-DNS-в-Ubuntu-для-адаптера-Global)
 
-[Настройка DNS в Xray](#Настройка-DNS-в-Xray)
-
 [Установка 3x ui self steal](#Установка-3x-ui-self-steal)
 
 ## Как правильно настроить SSH на Linux
@@ -122,44 +120,6 @@ sudo systemctl restart systemd-resolved
 ```
 sudo resolvectl status
 ```
-
-## Настройка DNS в Xray
-
-Заходим в 3x ui, Переходим на вкладку Настройки Xray
-
-Выставляем: 
-
-Настройка стратегии протокола Freedom - ForceIP (или ForceIPv4, если у вас нет IPv6 на vps)
-
-Настройка маршрутизации доменов - IPIfNonMatch
-
-Сохраняем
-
-![описание](./assets/s1.jpg)
-
-Переходим на вкладку DNS, включаем
-
-Стратегию запроса оставляем UseIP (или UseIPv4, если у вас нет IPv6 на vps)
-
-Включаем ползунки Отключить резевный DNS, Отключить резевный DNS при совпадении
-
-![описание](./assets/s2.jpg)
-
-Нажимаем Создать DNS
-
-Адрес: https+local://1.1.1.1/dns-query
-
-Порт: 443
-
-Стратегия: UseIP (или UseIPv4, если у вас нет IPv6 на vps)
-
-Skip Fallback - Включено
-
-![описание](./assets/s3.jpg)
-
-Сохраняем, Перезапускаем Xray
-
-(Можно добавить еще серверов, допустим https+local://8.8.8.8/dns-query или https+local://9.9.9.9/dns-query)
 
 ## Установка 3x ui self steal
 Вам нужно два домена (панели и селф стил) с днс А записями на айпи вашего VPS
