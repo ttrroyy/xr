@@ -6,8 +6,6 @@
 
 [Настройка DNS в Xray](#Настройка-DNS-в-Xray)
 
-[Установка WARP](#Установка-WARP)
-
 [Установка 3x ui self steal](#Установка-3x-ui-self-steal)
 
 ## Как правильно настроить SSH на Linux
@@ -163,35 +161,13 @@ Skip Fallback - Включено
 
 (Можно добавить еще серверов, допустим https+local://8.8.8.8/dns-query или https+local://9.9.9.9/dns-query)
 
-## Установка WARP
-
-Скачиваем и запускаем скрипт установки WARP:
-
-```
-curl -L https://raw.githubusercontent.com/Skrepysh/tools/refs/heads/main/install-warp-cli.sh > install-warp-cli.sh && chmod +x install-warp-cli.sh && ./install-warp-cli.sh
-```
-
-Выбираем установку скрипта нажмя на 1 и Enter:
-
-![описание](./assets/w1.png)
-
-Нажимаем просто Enter:
-
-![описание](./assets/w2.png)
-
-Вводим 40000 порт и нажимаем на Enter
-
-Далее в 3x ui заходим в Настройки Xray - Аутбаунды - Создать аутбаунд
-
-Вводим все как на скрине и перезапускаем Xray:
-
-![описание](./assets/w3.png)
-
 ## Установка 3x ui self steal
 Вам нужно два домена (панели и селф стил) с днс А записями на айпи вашего VPS
 
 ```
-sudo su -c "bash <(wget -qO- https://raw.githubusercontent.com/mozaroc/x-ui-pro/refs/heads/master/x-ui-latest.sh) -install yes"
+wget -qO x-ui-latest.sh https://raw.githubusercontent.com/mozaroc/3x-ui-pro/main/x-ui-latest.sh
+
+bash x-ui-latest.sh -install y -subdomain panel.example.com -reality_domain r.example.com
 ```
 
 Запускаем скрипт, вводим домены, ждем завершения, в конце копируем данные панели и заходим по ним. 
